@@ -1,6 +1,38 @@
+"use client";
+import React, { useEffect } from "react";
 import Link from "next/link"
 
 const ContactComp = () =>{
+    useEffect(() => {
+        const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzdgUOy_s6zjJQTgqXQ7GX3H1_w6TvWq1hsBZgH0mSREWt3qXCKA34-qo74-jfDVbHE/exec";
+
+        const form = document.forms.namedItem("home-contact");
+
+        if (form) {
+        const handleSubmit = async (e: Event) => {
+            e.preventDefault();
+            try {
+            await fetch(scriptURL, {
+                method: "POST",
+                body: new FormData(form),
+            });
+            alert("Pesan berhasil dikirim!");
+            form.reset();
+            } catch (error) {
+            console.error("Error:", error);
+            alert("Gagal mengirim Pesan.");
+            }
+        };
+
+        form.addEventListener("submit", handleSubmit);
+
+        // cleanup listener
+        return () => {
+            form.removeEventListener("submit", handleSubmit);
+        };
+        }
+    }, []);
     return(
         <>
          <section className="contact-section" id="contact-section">
@@ -35,10 +67,10 @@ const ContactComp = () =>{
                     </div>
                 </aside>
 
-                <form action="https://formspree.io/f/xvoeljyl" method="POST" className="contact__form">
-                    <input type="text" name="name" placeholder="Masukan Nama Anda" required/>
-                    <input type="email" name="email" placeholder="Masukan Email Anda" required/>
-                    <textarea name="message" rows={4} placeholder="Masukan Pesan" required></textarea>
+                <form action="" method="POST" className="contact__form" name="home-contact">
+                    <input type="text" name="Name" placeholder="Masukan Nama Anda" required/>
+                    <input type="email" name="Email" placeholder="Masukan Email Anda" required/>
+                    <textarea name="Message" rows={4} placeholder="Masukan Pesan" required></textarea>
                     <button type="submit" className="btn btn-primary">Kirim Pesan</button>
                 </form>
             </div>
