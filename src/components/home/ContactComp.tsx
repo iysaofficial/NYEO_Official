@@ -68,6 +68,7 @@ const ContactComp = () =>{
                 </aside>
 
                 <form action="" method="POST" className="contact__form" name="home-contact">
+                    <input type="hidden" name="Event" value="NYEO" readOnly />
                     <input type="text" name="Name" placeholder="Masukan Nama Anda" required/>
                     <input type="email" name="Email" placeholder="Masukan Email Anda" required/>
                     <textarea name="Message" rows={4} placeholder="Masukan Pesan" required></textarea>
