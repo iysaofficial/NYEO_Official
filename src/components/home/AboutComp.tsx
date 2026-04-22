@@ -5,7 +5,7 @@ const AboutComp = () => {
         <div className="about-content">
             <div className="about-text">
                 <h1>NYEO</h1>
-                <h5>National Youth Economy Olympiad</h5>
+                <h5>National Youth Economic Olympiad</h5>
                 <p>Olimpiade ini merupakan sebuah kompetisi yang diselenggarakan
 untuk menguji kemampuan dan pengetahuan para pelajar di
 bidang Ekonomi. Ajang ini dirancang
